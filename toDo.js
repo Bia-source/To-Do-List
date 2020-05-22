@@ -2,12 +2,8 @@ var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input');
 var buttonElement = document.querySelector('#app button');
 
-var tarefas = [
-  'Terminar o curso da Coders (Angular) 81% ',
-   'Terminar o curso da Semana Omnistack (React Native) 81 %',
-   'Terminar o curso de JavaScript da rocketseat (JS) 52%',
-   'Terminar o curso de React da rocketseat (React) 0%'
-];
+var tarefas = JSON.parse(localStorage.getItem('Lista_Tarefas')) || [];
+
 
 
 function mostrarTarefas(){
@@ -32,16 +28,19 @@ function mostrarTarefas(){
         buttonExcluirElement.setAttribute('onclick', 'excluirTarefa('+ posicao +')');
 
         // criando um botão para editar uma tarefa 
-        //var buttonEditarElement = document.createElement('button');
-        //var textoButtonEditar = document.createTextNode('Editar');
-        
+        // var buttonEditarElement = document.createElement('button');
+        // var textoButtonEditar = document.createTextNode('Editar');
+        // buttonEditarElement.setAttribute('onclick', 'editarTarefa(' + posicao +')' );
        
         // 
         tarefaElement.appendChild(tarefaText);
         listElement.appendChild(tarefaElement);
         tarefaElement.appendChild(buttonExcluirElement);
         buttonExcluirElement.appendChild(textoButtonExcluir);
-      
+        
+        // tarefaElement.appendChild(buttonEditarElement);
+        // buttonExcluirElement.appendChild(textoButtonEditar);
+        
     }
 }
 
@@ -59,16 +58,23 @@ function adicionarTarefa(){
     
     // Renderizando a tabela novamente 
     mostrarTarefas();
+    salvarStorage()
 }
 
   // adicionando a função de adicionar tarefas ao botão 
   buttonElement.onclick = adicionarTarefa;
+ 
+
+function salvarStorage(){
+    localStorage.setItem('Lista_Tarefas', JSON.stringify(tarefas));
+}
 
 function excluirTarefa(posicao){
    tarefas.splice(posicao, 1);
    mostrarTarefas();
+   salvarStorage()
 }
 
-function editarTarefa(){
-
+function editarTarefa(posicao){
+    salvarStorage()
 }
