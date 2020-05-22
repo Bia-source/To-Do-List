@@ -1,0 +1,1 @@
+alert('funcionou o link do JS');

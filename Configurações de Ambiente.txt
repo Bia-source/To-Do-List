@@ -1,0 +1,3 @@
+**********************CONFIGURAÇÕES DE AMBIENTE************************
+Para rodar o projeto, basta abrir a pasta onde o index.html se encontra e 
+abrir com o chrome 
